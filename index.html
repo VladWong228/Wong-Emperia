@@ -12,6 +12,17 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            position: relative;
+        }
+
+        /* Контейнер для анимированного фона с частицами */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1; /* Задний план */
             background-image: 
                 radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.08) 20%, transparent 20%, transparent 100%),
                 radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.08) 20%, transparent 20%, transparent 100%),
@@ -39,12 +50,16 @@
             margin: 0 auto;
             padding: 20px;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         header {
             padding: 50px 0;
             background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(30,30,30,0.8) 50%, rgba(0,0,0,0) 100%);
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            z-index: 1;
         }
 
         .server-info {
@@ -77,7 +92,7 @@
         .gold-button {
             display: inline-block;
             padding: 15px 40px;
-            background-color: transparent;
+            background-color: rgba(0, 0, 0, 0.6);
             color: #d4af37;
             border: 2px solid #d4af37;
             text-decoration: none;
@@ -157,6 +172,8 @@
             border-top: 1px solid rgba(212, 175, 55, 0.1);
             color: #777;
             font-size: 0.85em;
+            position: relative;
+            z-index: 1;
         }
 
         .developer-info {
@@ -176,6 +193,9 @@
 </head>
 <body>
 
+    <!-- ФОН С ЧАСТИЦАМИ -->
+    <div id="particles-js"></div>
+
     <header>
         <div class="container">
             <h1>СЕМЬЯ</h1>
@@ -184,8 +204,7 @@
             
             <!-- КНОПКИ НАВИГАЦИИ -->
             <a href="https://discord.gg/ВСТАВЬ_ССЫЛКУ_СЮДА" class="gold-button" target="_blank">Присоединиться к Discord</a>
-            
-            <!-- Кнопка перехода на состав семьи -->
+            <a href="https://vk.ru/wonge" class="gold-button" target="_blank">Сообщество ВКонтакте</a>
             <a href="https://vladwong228.github.io/Wong-Member/" class="gold-button">Состав семьи WONG</a>
         </div>
     </header>
@@ -275,5 +294,58 @@
         <p class="developer-info">Создатель сайта: <strong>Vlad_Wong</strong> | <a href="https://vk.com/vladmoneso" target="_blank">VK: @vladmoneso</a> | DS: hargoj_228</p>
     </footer>
 
+    <!-- СКРИПТ АНИМАЦИИ ЧАСТИЦ -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 60,
+                    "density": { "enable": true, "value_area": 800 }
+                },
+                "color": { "value": "#d4af37" },
+                "shape": { "type": "circle" },
+                "opacity": {
+                    "value": 0.5,
+                    "random": true,
+                    "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": { "enable": true, "speed": 2, "size_min": 0.5, "sync": false }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 130,
+                    "color": "#d4af37",
+                    "opacity": 0.25,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 1.2,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": { "distance": 140, "line_linked": { "opacity": 0.6 } },
+                    "push": { "particles_nb": 3 }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
 </body>
 </html>
